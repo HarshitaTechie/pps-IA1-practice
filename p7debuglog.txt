@@ -1,0 +1,99 @@
+gcc -g p7final.c
+ ./a.out
+Enter the real and imaginary values respectively
+2
+3
+Enter the real and imaginary values respectively
+4
+5
+2+3i + 4+5i = 6+8i
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x843: file p7final.c, line 31.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice-4/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p7final.c:31
+31    a=input_complex();
+(gdb) s
+input_complex () at p7final.c:8
+8   {
+(gdb) n
+10    printf("Enter the real and imaginary values respectively\n");
+(gdb) n
+Enter the real and imaginary values respectively
+11    scanf("%d %d",&c.real,&c.imaginary);
+(gdb) n
+2
+3
+12    return c;
+(gdb) n
+13  }
+(gdb) n
+main () at p7final.c:32
+32    b=input_complex();
+(gdb) s
+input_complex () at p7final.c:8
+8   {
+(gdb) n
+10    printf("Enter the real and imaginary values respectively\n");
+(gdb) n
+Enter the real and imaginary values respectively
+11    scanf("%d %d",&c.real,&c.imaginary);
+(gdb) n
+4
+5
+12    return c;
+(gdb) n
+13  }
+(gdb) n
+main () at p7final.c:33
+33    c=add(a,b);
+(gdb) s
+add (a=..., b=...) at p7final.c:18
+18      c.real=a.real+b.real;
+(gdb) n
+19      c.imaginary=a.imaginary+b.imaginary;
+(gdb) n
+20      return c;
+(gdb) n
+21  }
+(gdb) n
+main () at p7final.c:34
+34    output(a,b,c);
+(gdb) s
+output (a=..., b=..., c=...) at p7final.c:25
+25    printf("%d+%di + %d+%di = %d+%di\n",a.real,a.imaginary,b.real,b.imaginary,c.real,c.imaginary);
+(gdb) n
+2+3i + 4+5i = 6+8i
+26  }
+(gdb) n
+main () at p7final.c:35
+35    return 0;
+(gdb) n
+36  }
+(gdb) n
+__libc_start_main (main=0x55ee8020083b <main>, argc=1, argv=0x7ffe576812e8, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7ffe576812d8) at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) c
+Continuing.
+[Inferior 1 (process 236) exited normally]
+(gdb) 
